@@ -1,0 +1,17 @@
+{
+  "name": "my-demo",
+  "version": "1.0.0",
+  "description": "serverless demo",
+  "main": "handler.js",
+  "scripts": {
+    "deploy": "serverless deploy -l",
+    "invoke": "serverless invoke -f hello -l",
+    "send": "curl http://localhost:3000/hello",
+    "start": "serverless offline start"
+  },
+  "author": "R. Mark Volkmann <r.mark.volkmann@gmail.com> (http://ociweb.com/mark)",
+  "license": "MIT",
+  "dependencies": {
+    "serverless-offline": "^3.16.0"
+  }
+}
