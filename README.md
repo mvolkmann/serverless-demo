@@ -2,15 +2,16 @@
 This demonstrates using the npm package "serverless"
 to work with AWS Lambda and Google Cloud functions.
 
-See the npm scripts in `package.json`.
-
-To run in AWS:
-* `npm run deploy` deploys the Lambda function to AWS
-* `npm run invoke` invokes the Lambda function
-
-To run locally:
-* `npm start` starts a local server
-* `npm run send` sends an HTTP requests to trigger the Lambda function
+Amazon Web Services (AWS) demo
+- see the npm scripts in `package.json`
+- to deploy the Lambda function
+  * enter `npm run deploy`
+- to run the Lambda function
+  * enter `npm run invoke`
+- to run the Lambda function locally
+  * enter `npm start` to start a local server
+  * enter `npm run send` to sends an HTTP request
+    that triggers the Lambda function
 
 Google Cloud Platform (GCP) demo
 - to create a GCP account
