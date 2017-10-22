@@ -24,6 +24,8 @@ Google Cloud Platform (GCP) demo
   * browse https://console.cloud.google.com/home/dashboard
   * at top to the right of "Google Cloud Platform",
     click the menu that should say "Select a project"
+    - if this isn't your first project, click the name of your last project
+      which will appear instead of "Select a project"
   * a dialog will appear
   * press the "+" button in the upper-right
   * enter a project name
@@ -31,34 +33,36 @@ Google Cloud Platform (GCP) demo
   * wait about 30 seconds for the project to be created
   * a project ID and project number will be displayed
     - note the project ID because it will be needed later
-  * from the hamburger menu in the upper-left, select "APIs & services ... Dashboard"
+  * from the hamburger menu in the upper-left,
+    select "APIs & services ... Dashboard"
   * click "ENABLE APIS AND SERVICES"
-  * enter "Cloud Deployment" and click the tile for
-    "Google Cloud Deployment Manager V2 API" and press "ENABLE"
-  * enter "Cloud Functions" and click the tile for
-    "Google Cloud Functions API" and press "ENABLE"
+  * enter "Cloud Deployment", click the tile for
+    "Google Cloud Deployment Manager V2 API", and press "ENABLE"
+  * enter "Cloud Functions", click the tile for
+    "Google Cloud Functions API", and press "ENABLE"
 - to setup credentials
   * click "Credentials" in the left nav
   * click "Create credentials" and select "Service account key"
   * in the "Service account" dropdown select "New service account"
-  * enter a name for the service
+  * enter a service account name
   * in the "Role" dropdown select "Project ... Owner"
   * in the "Key type" radio buttons select "JSON" (the default)
   * press the "Create" button
-  * a JSON keyfile will be downloaded
-    - contains private_key
+  * a JSON keyfile containing a private key will be downloaded
   * move this file to ~/.gcloud/keyfile.json
 - to create a project starting point
-  * enter `serverless create --template google-nodejs --path gcp-demo`
-    - creates the files for a "Hello World!" service
+  * enter `serverless create --template google-nodejs --path {project-name}`
+    - the project name was entered earlier when the project was created
+    - this creates the files for a "Hello World!" service
     - one generated file is serverless.yml
       * defines the service
-      * includes any number of Google Cloud Functions,
+      * can describe any number of Google Cloud Functions,
         the events that trigger them,
         and resources they require
-  * cd gcp-demo
-  * npm install
+  * cd {project-name}
+  * enter `npm install`
     - without this you will get an error about a plugin not being found
+      when the function is invoked
   * edit serverless.yml
     - verify that the "credentials" property is
       set to the path to the JSON keyfile
@@ -67,9 +71,8 @@ Google Cloud Platform (GCP) demo
   * enter `serverless deploy`
 - to invoke the service
   * enter `serverless invoke --function {function-name}` (-f)
-    where "first" is a function name specified in serverless.yml
+    - the default function name in serverless.yml is "first"
 - to view logs from past runs of a function
-  * enter `serverless log --function *function-name*` (-f)
+  * enter `serverless log --function {function-name}` (-f)
 - to remove the service
-  * cd to the project directory
-  * enter `serverless remove`
+  * enter `serverless remove` from within the project directory
