@@ -69,10 +69,14 @@ Google Cloud Platform (GCP) demo
     - change "project: my-project" to the project ID noted earlier
 - to deploy the service
   * enter `serverless deploy`
+    from within the project directory
 - to invoke the service
   * enter `serverless invoke --function {function-name}` (-f)
+    from within the project directory
     - the default function name in serverless.yml is "first"
 - to view logs from past runs of a function
   * enter `serverless log --function {function-name}` (-f)
+    from within the project directory
 - to remove the service
-  * enter `serverless remove` from within the project directory
+  * enter `serverless remove`
+    from within the project directory
