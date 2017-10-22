@@ -3,15 +3,56 @@ This demonstrates using the npm package "serverless"
 to work with AWS Lambda and Google Cloud functions.
 
 Amazon Web Services (AWS) demo
+- to setup an AWS account
+  * browse https://aws.amazon.com
+  * press "Sign Up" button
+- to setup "Identity and Access Management" (IAM)
+  * from the "My Account" menu in the upper-right,
+    select "AWS Management Console"
+  * enter your password and press "Sign In"
+  * from the "Services" menu,
+    in the "Security, Identity, & Compliance" group,
+    select "IAM"
+  * in the left nav, select "Users"
+  * press the "Add user" button
+  * enter a user name
+  * check both access types, programmatic and AWS Management Console
+  * press the "Next: Permissions" button
+  * press the big "Attach existing policies directly" button
+  * check "AdministratorAccess"
+  * press the "Next: Review" button
+  * press the "Create User" button
+  * save the "Access key ID" and "Secret access key" values
+    so they can be used later
+    - for example, can save in 1Password
+  * press the "Close" button
+- to configure serverless for AWS
+  * enter `serverless config credentials --provider aws --key {access-key-id} --secret {secret-access-key}`
+- to create a service that will be implemented in Node.js
+  * enter `serverless create --template aws-nodejs --path {service-name}
+  * enter `cd {service-name}`
+  * enter `npm install`
+  * edit handler.js to change the default implementation
+  * edit serverless.yml
+    - to change the version of Node that is used
+    - to add more functions
+    - to configure the triggers for the functions
 - see the npm scripts in `package.json`
 - to deploy the Lambda function
-  * enter `npm run deploy`
-- to run the Lambda function
-  * enter `npm run invoke`
+  * enter `serverless deploy -l`
+  * consider creating an npm script in package.json
+    so this can be done with `npm run deploy`
+- to invoke the Lambda function
+  * enter `serverless invoke -f hello -l`
+    so this can be done with `npm run invoke`
+  * consider creating an npm script in package.json
 - to run the Lambda function locally
-  * enter `npm start` to start a local server
-  * enter `npm run send` to sends an HTTP request
-    that triggers the Lambda function
+  * enter `serverless offline start`
+  * consider creating an npm script in package.json
+    so this can be done with `npm start`
+  * enter `curl http://localhost:3000/hello` to trigger the Lambda function
+  * consider creating an npm script in package.json
+    so this can be done with `npm run send`
 
 Google Cloud Platform (GCP) demo
 - to create a GCP account
